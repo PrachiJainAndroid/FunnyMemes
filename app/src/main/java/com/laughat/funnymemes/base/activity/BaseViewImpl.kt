@@ -5,10 +5,7 @@ import androidx.databinding.ViewDataBinding
 
 
 internal interface BaseViewImpl<B : ViewDataBinding, N : BaseNavigator,V : BaseViewModel<N>> {
-    /**
-     * helps you toDate hide Keyboard fromDate Current Focus VIew.
-     */
-    fun hideKeyboard()
+
 
     /**
      * perform DataBinding for the Activity

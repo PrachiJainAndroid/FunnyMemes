@@ -1,5 +1,6 @@
 package com.laughat.funnymemes.dashboard
 
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.laughat.funnymemes.R
 import com.laughat.funnymemes.BR
+import com.laughat.funnymemes.R
 import com.laughat.funnymemes.base.models.MemesItem
 import com.laughat.funnymemes.databinding.MemeItemBinding
-
-
-import android.widget.TextView
-
-
 
 
 class MemesListAdapter(var memesItemList: List<MemesItem>?):

@@ -16,7 +16,6 @@ import com.laughat.funnymemes.database.MemesDatabaseDao
 import com.laughat.funnymemes.repository.local.AppSecureSharedPreferences
 import com.laughat.funnymemes.repository.remote.ApiPool
 import com.laughat.funnymemes.repository.remote.AppRepoManager
-import com.laughat.funnymemes.repository.remote.AqiRepository
 import com.laughat.funnymemes.repository.remote.RepoManager
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -51,8 +50,7 @@ val dataRepoModule = module {
         AppSecureSharedPreferences(WeakReference(get()))
     }
     single { provideDatabase(androidApplication()) }
-    single { provideAQIDao(get()) }
-    single { provideAqiRepository(get(), get()) }
+    single { provideMemesDao(get()) }
     single<ToolKit> {
         AppToolKit(get())
     }
@@ -102,13 +100,8 @@ fun provideDatabase(application: Application): MemesDatabase {
     return MemesDatabase.getInstance(application)
 }
 
-fun provideAQIDao(database: MemesDatabase): MemesDatabaseDao {
+fun provideMemesDao(database: MemesDatabase): MemesDatabaseDao {
     return database.memesDatabaseDao
 }
-
-fun provideAqiRepository(
-    sharedPreferences: AppSecureSharedPreferences,
-    memesDatabaseDao: MemesDatabaseDao
-) = AqiRepository(sharedPreferences, memesDatabaseDao)
 
 

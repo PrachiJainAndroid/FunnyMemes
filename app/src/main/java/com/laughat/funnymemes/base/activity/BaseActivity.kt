@@ -1,8 +1,6 @@
 package  com.laughat.funnymemes.base.activity
 
 import android.content.Intent
-import android.content.res.AssetManager
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -13,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.amnix.xtension.extensions.isNetworkAvailable
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import retrofit2.Response
 import com.laughat.funnymemes.utils.guardRun as guardRun1
 
 
@@ -76,42 +73,6 @@ abstract class BaseActivity<B : ViewDataBinding, N : BaseNavigator, V : BaseView
 
     override fun finishActivity() {
         finish()
-    }
-
-    override fun onError(error: String, t: Throwable?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onApiFailed(response: Response<*>?, t: Throwable) {
-        TODO("Not yet implemented")
-    }
-
-
-
-    override fun getAppResources(): Resources? {
-        TODO("Not yet implemented")
-    }
-
-    override fun getAppAssets(): AssetManager? {
-        TODO("Not yet implemented")
-    }
-
-    override fun showConfirmationDialog(
-        msg: String,
-        onResponse: (result: Boolean) -> Unit,
-        positiveText: String,
-        negativedText: String,
-        cancelable: Boolean
-    ) {
-        TODO("Not yet implemented")
-    }
-
-    override fun requestPermission(permission: String, callback: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
-    }
-
-    override fun hideKeyboard() {
-        TODO("Not yet implemented")
     }
 
     override fun performDataBinding() {

@@ -2,20 +2,20 @@ package com.laughat.funnymemes.dashboard
 
 
 import android.util.Log
-import com.laughat.funnymemes.database.MemesDatabaseDao
 import com.laughat.funnymemes.base.activity.BaseViewModel
 import com.laughat.funnymemes.base.models.MemesItem
 import com.laughat.funnymemes.base.rx.SchedulerImpl
+import com.laughat.funnymemes.database.MemesDatabaseDao
 import com.laughat.funnymemes.repository.remote.RepoManager
 import com.laughat.funnymemes.repository.remote.network.APIInterface
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.BroadcastChannel
 import java.util.*
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class DashBoardActivityViewModel(repoManager: RepoManager, schedulerImpl: SchedulerImpl,
-                                 val dataBase: MemesDatabaseDao
+class DashBoardActivityViewModel(
+    repoManager: RepoManager, schedulerImpl: SchedulerImpl,
+    val dataBase: MemesDatabaseDao
 ) : BaseViewModel<DashBoardNavigator>(repoManager, schedulerImpl) {
 
     val allMemesList = dataBase.getAllValues()
@@ -51,8 +51,8 @@ class DashBoardActivityViewModel(repoManager: RepoManager, schedulerImpl: Schedu
 
     fun setMemeListAdapter() {
         getNavigator()?.setMemesListAdapter(MemesListAdapter(allMemesList.value))
-            {
-getNavigator()?.showFullImageDialog(it)
+        {
+            getNavigator()?.showFullImageDialog(it)
 
 
         }
