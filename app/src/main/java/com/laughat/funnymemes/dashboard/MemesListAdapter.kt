@@ -13,9 +13,16 @@ import com.laughat.funnymemes.BR
 import com.laughat.funnymemes.base.models.MemesItem
 import com.laughat.funnymemes.databinding.MemeItemBinding
 
+
+import android.widget.TextView
+
+
+
+
 class MemesListAdapter(var memesItemList: List<MemesItem>?):
     RecyclerView.Adapter<MemesListAdapter.MemeAdapterViewHolder>() {
     lateinit var mContext: Context
+    var onImageViewClick: ((MemesItem) -> Unit)? = null
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -35,6 +42,7 @@ class MemesListAdapter(var memesItemList: List<MemesItem>?):
 
         // Loading icon on image view using Glide
         Glide.with(mContext).asBitmap().load(memeItem?.url).into(inBinding.ivMeme)
+        inBinding.ivMeme.setOnClickListener { onImageViewClick?.invoke(memeItem!!) }
 
 
     }
@@ -56,4 +64,14 @@ class MemesListAdapter(var memesItemList: List<MemesItem>?):
         }
     }
 
+    /*
+   *
+   * click listener for item selected
+   * */
+
+    fun setOnImageViewClickListener(onImageViewClick: (MemesItem) -> Unit) {
+        this.onImageViewClick = onImageViewClick
+    }
+
 }
+

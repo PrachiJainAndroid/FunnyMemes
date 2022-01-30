@@ -50,7 +50,10 @@ class DashBoardActivityViewModel(repoManager: RepoManager, schedulerImpl: Schedu
     }
 
     fun setMemeListAdapter() {
-        getNavigator()?.setMemesListAdapter(MemesListAdapter(allMemesList.value)) {
+        getNavigator()?.setMemesListAdapter(MemesListAdapter(allMemesList.value))
+            {
+getNavigator()?.showFullImageDialog(it)
+
 
         }
     }
