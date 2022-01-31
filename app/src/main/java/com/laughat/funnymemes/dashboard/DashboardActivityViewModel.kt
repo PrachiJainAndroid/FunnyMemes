@@ -26,9 +26,7 @@ class DashBoardActivityViewModel(
     fun fetchMemes() {
         getRepoManager()?.getApi("https://api.imgflip.com/", APIInterface::class.java)
             ?.getMemes()
-            ?.subscribeOn(getAppScheduler()?.io())
-            ?.observeOn(getAppScheduler()?.main())
-            ?.subscribe({
+            ?.executeSilent({
                 it?.let {
                     val memesList = it.body()?.data?.memes
                     uiScope.launch {
@@ -37,7 +35,11 @@ class DashBoardActivityViewModel(
 
                     Log.d("Success", it.toString())
                 }
-            }, { Log.d("Error", it.toString()) })
+
+            }, {
+                Log.d("Error", it.toString())
+            })
+
     }
 
     private suspend fun saveRecordstoDB(memesList: List<MemesItem>) {
